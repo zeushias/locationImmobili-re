@@ -14,12 +14,7 @@ class TypeLogementController extends AbstractController
     // déclarations 
 
     private $message;
-    //private $em = null;
-
-    /*public function __construct(EntityManagerInterface $em){
-        $this->em = $em;
-    }*/
-
+ 
     #[Route('/typelogement', name: 'app_type_logement')]
     public function index(): Response
     {
@@ -46,7 +41,7 @@ class TypeLogementController extends AbstractController
             $typelogement-> setLibelle($data['libelle']);           
 
             $em = $this->getDoctrine()->getManager();
-            
+
             $em->persist($typelogement);
             $em->flush();
             $message = 'Enrégistrement effectué avec succès';
