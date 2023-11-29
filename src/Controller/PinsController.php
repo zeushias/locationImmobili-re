@@ -10,18 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PinsController extends AbstractController
 {
-    private $em;
-
-    public function __construct(EntityManagerInterface $em){
-        $this->em = $em;
-
-        $typeLogement = new TypeLogement;
-        $typeLogement-> setLibelle('STUDIO');
-
-        $this->$em->persist($typeLogement);
-        $this->$em->flush();
-    }
     
+
     /**
      * @Route("/", name="app_pins")
      */
