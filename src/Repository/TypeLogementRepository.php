@@ -39,20 +39,21 @@ class TypeLogementRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return TypeLogement[] Returns an array of TypeLogement objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('t.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return TypeLogement[] Returns an array of TypeLogement objects
+     */
+    public function findById($id): ?TypeLogement
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.id = :id')
+            ->setParameter('id', $id)
+            ->orderBy('t.id', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+            //->getResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?TypeLogement
 //    {

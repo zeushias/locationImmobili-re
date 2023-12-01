@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+
+    {% block meta %}
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% endblock %}
+
+    {% block stylesheets %}
+        <!-- Bootstrap core CSS -->
+        <link href="./css/css2" rel="stylesheet">
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" href="./css/fontawesome.css">
+        <link rel="stylesheet" href="./css/templatemo-villa-agency.css">
+        <link rel="stylesheet" href="./css/owl.css">
+        <link rel="stylesheet" href="./css/animate.css">
+        <link rel="stylesheet" href="./css/swiper-bundle.min.css">
+    {% endblock %}
+
+{% endblock %}
+
+{% block title %}Type de logement{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+
+    <h1>Liste des types de logement</h1>      
+
+    <div class="contact-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    
+                    <table style="width:100%">
+                      <tr>
+                        <th>Libelle</th>
+                      </tr>
+                    
+                        {% for tl in typelogements %}
+                      <tr>
+                        <td> {{tl.libelle}} </td>
+                        <td> 
+                            <a href="/typelogement/add/{{ tl.id }}">Modifier</a>
+                            <a href="/typelogement/remove/{{ tl.id }}">Supprimer</a> 
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
