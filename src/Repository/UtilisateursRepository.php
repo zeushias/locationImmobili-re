@@ -39,28 +39,55 @@ class UtilisateursRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Utilisateurs[] Returns an array of Utilisateurs objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('u.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+    * @return Utilisateurs[] Returns an array of Utilisateurs objects
+    */
+    public function findById($id): ?Utilisateurs
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.id = :val')
+            ->setParameter('val', $id)
+            ->orderBy('u.id', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
 
-//    public function findOneBySomeField($value): ?Utilisateurs
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        ;
+    }
+
+    public function findByLoginAndPass($login, $pass): ?Utilisateurs
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.login = :login')
+            ->andWhere('u.pass = :pass')
+            ->andWhere('u.statut = :statut')
+            ->setParameter('login', $login)
+            ->setParameter('pass', $pass)
+            ->setParameter('statut', 'V')
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+        public function getAllValide(): array
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.statut = :statut')
+            ->setParameter('statut', 'V')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByLogin($login): ?Utilisateurs
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.login = :login')
+            ->andWhere('u.statut = :statut')
+            ->setParameter('login', $login)
+            ->setParameter('statut', 'V')
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

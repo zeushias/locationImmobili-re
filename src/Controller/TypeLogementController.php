@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\LogementsRepository;
 
 class TypeLogementController extends AbstractController
 {
@@ -18,21 +19,25 @@ class TypeLogementController extends AbstractController
     private $typeLogementRepository;
 
     
-    public function __construct(TypeLogementRepository $typeLogementRepository)
+    public function __construct(TypeLogementRepository $typeLogementRepository, LogementsRepository $logementRepository)
     {
         $this->typeLogementRepository = $typeLogementRepository;
+        $this->logementRepository = $logementRepository;
+        $this->message = '';
     }
- 
+    
+    // afficher page de d'enrégistrement d'un type logement
    #[Route('/typelogement/add', name: 'app_type_logement')]
-    public function index(): Response
+    public function create(): Response
     {
         return $this->render('type_logement/typelogement.html.twig', [
             'typeLogement' => '', 'message' => '',
         ]);
     }
-      
+     
+    // afficher page de modification d'un type logement 
     #[Route('/typelogement/add/{id}', name: 'app_type_logement_id')]
-    public function index2($id): Response
+    public function modify($id): Response
     {
         //dd((int) $id);
         $tl = $this->typeLogementRepository->findById((int) $id);
@@ -47,30 +52,45 @@ class TypeLogementController extends AbstractController
     */
     public function add(Request $request)
     {
+        $typelogement = new TypeLogement;
+
         if($request->isMethod('POST')){
             $data = $request->request->all();
-            
-            //contrôle 
-            if($data['libelle'] === null or $data['libelle'] === ""){
-                $message = 'Veuillez saisir le libellé';
-        } else {
 
             // typelogement
-            $typelogement = new TypeLogement;
-            $typelogement-> setLibelle($data['libelle']);           
+            
+            $typelogement-> setId($data['id']); 
+            $typelogement-> setLibelle($data['libelle']); 
+            //dd($typelogement);
+            //contrôle 
+            if($data['libelle'] === null or $data['libelle'] === ""){
+                $this->message = 'Veuillez saisir le libellé';
+        } else {   
 
-            $this->typeLogementRepository->add($typelogement, true);
+            $typeLogExistant = $this->typeLogementRepository->findByLibelle($data['libelle']); 
 
-            $message = 'Enrégistrement effectué avec succès';
+            if($typeLogExistant != null){      
+
+                $this->message = 'Ce libellé existe déjà! Merci';
+
+            } else {
+
+                $this->typeLogementRepository->add($typelogement, true);
+dd($typelogement);
+                $this->message = 'Enrégistrement effectué avec succès';
+
+                return $this->render('type_logement/typelogement.html.twig', [
+                    'typeLogement' => '','message' => $this->message,]);
+            }
         }
         return $this->render('type_logement/typelogement.html.twig', [
-            'message' => $message,]);
+            'typeLogement' => $typelogement,'message' => $this->message,]);
 
         }
     }
 
-
-    #[Route('/typelogement/', name: 'app_type_logement')]
+    // affichage liste des utilisateurs
+    #[Route('/typelogement/', name: 'type_logement_list_page')]
     public function getAll(): Response
     {
         $typelogements = $this->typeLogementRepository->findAll();
@@ -89,12 +109,23 @@ class TypeLogementController extends AbstractController
         //return new JsonResponse($data, Response::HTTP_OK);
     }
 
-    public function updateCustomer(TypeLogement $typelogement): TypeLogement
+    #[Route('/typelogement/remove/{id}', name: 'app_type_logement')]
+    public function remove($id): Response
     {
-        $this->manager->persist($typelogement);
-        $this->manager->flush();
-
-        return $customer;
+        $logement = $this->logementRepository->findByTypeLogement($id);
+        if($logement != null ){
+        return $this->render('type_logement/typelogement.html.twig', [
+            'typeLogement' => '', 'message' => 'Ce type logement est utilisé',
+        ]);
+    } else {
+        $tl = $this->typeLogementRepository->findById((int) $id);
+        $this->typeLogementRepository->remove($tl, true);
+        $typelogements = $this->typeLogementRepository->findAll();
+        return $this->render('type_logement/typelogementList.html.twig', [
+            'typelogements' => $typelogements, 'message' => 'Suppression effectuée',
+        ]);
+        
+    }
     }
 
 }

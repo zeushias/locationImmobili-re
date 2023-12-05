@@ -1,3 +1,71 @@
 index:
     path: /
     controller: App\Controller\PinsController::index
+
+indexUser:
+    path: /
+    controller: App\Controller\PinsController::indexUser
+
+typelogementList:
+    path: /typelogement
+    controller: App\Controller\TypeLogementController::getAll
+
+utilisateurList:
+    path: /utilisateur
+    controller: App\Controller\UtilisateurController::getAll
+
+typelogementAdd:
+    path: /typelogement/add
+    controller: App\Controller\TypeLogementController::create
+
+typelogementRemove:
+    path: /typelogement/remove/{id}
+    controller: App\Controller\TypeLogementController::remove
+
+utilisateurAdd:
+    path: /utilisateur/add
+    controller: App\Controller\UtilisateurController::create
+
+typelogementModify:
+    path: /typelogement/add/{id}
+    controller: App\Controller\TypeLogementController::modify
+
+utilisateurModify:
+    path: /utilisateur/add/{id}
+    controller: App\Controller\UtilisateurController::modify
+
+typelogementCreate:
+    path: /typelogement/create
+    controller: App\Controller\TypeLogementController::add
+
+utilisateurCreate:
+    path: /utilisateur/create
+    controller: App\Controller\UtilisateurController::add
+
+utilisateurRemove:
+    path: /utilisateur/remove/{id}
+    controller: App\Controller\UtilisateurController::remove
+
+connexionPage:
+    path: /connexion
+    controller: App\Controller\ConnexionController::index
+
+connexionCreate:
+    path: /connexion/authentification
+    controller: App\Controller\ConnexionController::connect
+
+deconnexion:
+    path: /deconnexion/
+    controller: App\Controller\ConnexionController::deconnect
+
+annonce:
+    path: /annonce
+    controller: App\Controller\AnnoncesController::index
+
+annonceList:
+    path: /annonce/list
+    controller: App\Controller\AnnoncesController::getAll
+
+annonceCreate:
+    path: /annonce/create
+    controller: App\Controller\AnnoncesController::create

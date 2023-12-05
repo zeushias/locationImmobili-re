@@ -1,26 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block head %}
 
-    {% block meta %}
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {% endblock %}
-
-    {% block stylesheets %}
-        <!-- Bootstrap core CSS -->
-        <link href="./css/css2" rel="stylesheet">
-        <link href="./css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Additional CSS Files -->
-        <link rel="stylesheet" href="./css/fontawesome.css">
-        <link rel="stylesheet" href="./css/templatemo-villa-agency.css">
-        <link rel="stylesheet" href="./css/owl.css">
-        <link rel="stylesheet" href="./css/animate.css">
-        <link rel="stylesheet" href="./css/swiper-bundle.min.css">
-    {% endblock %}
-
-{% endblock %}
 
 {% block title %}Annonces{% endblock %}
 
@@ -32,29 +12,107 @@
 
 <div class="example-wrapper">
     <h1>Enrégistrement des annonces</h1>
-     {{ controller_name }}! 
+     {{ message }}
 
     <div class="contact-content">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5">
                     
-                    <form id="annonceForm" action="/annonces" method="post">
+                    <form id="annonceForm" action="/annonces/create" method="post">
                         <div class="row">
-                                                        
+                        
                             <div class="col-lg-12">
                                 <fieldset>
-                                    <label for="dateMiseEnLigne">Date de mise en ligne</label>
-                                    <input type="Date" name="dateMiseEnLigne" id="dateMiseEnLigne" placeholder="Date..." autocomplete="on">
+                                    <label for="typeLogement">Type de logement</label>
+                                    <select name="typeLogement" id="typeLogement">
+                                        <option>...</option>
+                                        {% for tl in typelogements %}
+                                        <option> {{tl.libelle}} </option>
+                                        {%endfor%}
+                                    </select>
                                 </fieldset>
                             </div>
 
                             <div class="col-lg-12">
                                 <fieldset>
-                                    <label for="description">Description</label>
+                                    <label for="nbPieces">Nombre de pièce</label>
+                                    <input type="text" name="nbPieces" id="nbPieces" placeholder="Nombre de pièce..." autocomplete="on">
+                                </fieldset>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <label for="numeroEtage">Numéro étage</label>
+                                    <input type="text" name="numeroEtage" id="numeroEtage" placeholder="Numéro étage..." autocomplete="on">
+                                </fieldset>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <label for="proprietaire">Proprietaire</label>
+                                    <input type="text" name="proprietaire" id="proprietaire" placeholder="Superficie..." autocomplete="on">
+                                </fieldset>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <label for="superficie">Superficie</label>
+                                    <input type="text" name="superficie" id="superficie" placeholder="Superficie..." autocomplete="on">
+                                </fieldset>
+                                </fieldset>
+                            </div>
+                                                        
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <label for="description">Description logement</label>
                                     <textarea name="description" id="description" placeholder="Description"></textarea>
                                 </fieldset>
                             </div>
+
+                        </>
+
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <label for="adresseComplete">Adresse complète</label>
+                                    <input type="text" name="adresseComplete" id="adresseComplete" placeholder="Adresse complète..." autocomplete="on">
+                                </fieldset>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <label for="cp">Code postal</label>
+                                    <input type="text" name="cp" id="cp" placeholder="Code postal..." autocomplete="on">
+                                </fieldset>
+                            </div>
+                                                        
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <label for="ville">Ville</label>
+                                    <input type="text" name="ville" id="ville" placeholder="Ville..." autocomplete="on">
+                                </fieldset>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <label for="pays">Pays</label>
+                                    <select name="pays" id="pays" placeholder="Pays..." autocomplete="on">
+                                        <option>France</option>
+                                        <option>Espagne</option>
+                                    </select>
+                                </fieldset>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <label for="descriptionA">Description</label>
+                                    <textarea name="descriptionA" id="descriptionA" placeholder="Description"></textarea>
+                                </fieldset>
+                            </div>
+
+                        </div>
 
                             <div class="col-lg-12">
                                 <fieldset>
@@ -63,7 +121,6 @@
                                 </fieldset>
                             </div>
 
-                        </div>
                     </form>
                 </div>
             </div>
@@ -72,4 +129,7 @@
 
 
 </div>
+
+
+
 {% endblock %}

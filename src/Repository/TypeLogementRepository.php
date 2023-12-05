@@ -55,13 +55,13 @@ class TypeLogementRepository extends ServiceEntityRepository
         ;
     }
 
-//    public function findOneBySomeField($value): ?TypeLogement
-//    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function findByLibelle($libelle): ?TypeLogement
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.libelle = :val')
+            ->setParameter('val', $libelle)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

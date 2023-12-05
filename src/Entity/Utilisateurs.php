@@ -37,9 +37,21 @@ class Utilisateurs
      */
     private $nomComplet;
 
+    /**
+     * @ORM\Column(type="string", length=1)
+     */
+    private $statut;
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+        public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getLogin(): ?string
@@ -86,6 +98,18 @@ class Utilisateurs
     public function setNomComplet(string $nomComplet): self
     {
         $this->nomComplet = $nomComplet;
+
+        return $this;
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(string $statut): self
+    {
+        $this->statut = $statut;
 
         return $this;
     }
