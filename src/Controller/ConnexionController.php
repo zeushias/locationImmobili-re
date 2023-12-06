@@ -8,16 +8,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Repository\TypeLogementRepository;
 
 class ConnexionController extends AbstractController
 {
+    // déclarations
     private $message ;
     private $utilisateurRepository;
 
-    
-    public function __construct(UtilisateursRepository $utilisateurRepository)
+    // contructeur
+    public function __construct(UtilisateursRepository $utilisateurRepository, TypeLogementRepository $typeLogementRepository)
     {
         $this->utilisateurRepository = $utilisateurRepository;
+        $this->typeLogementRepository = $typeLogementRepository;
         $this->message = '';
     }
 
@@ -33,6 +36,8 @@ class ConnexionController extends AbstractController
     */
     public function connect(Request $request)
     {
+        $typelogements = $this->typeLogementRepository->findAll();
+
         if($request->isMethod('POST')){
             $data = $request->request->all();
 
@@ -44,22 +49,23 @@ class ConnexionController extends AbstractController
                 $session->start();
                 $session->set('session_user', $user);
                 
-            return $this->render('pins/indexUser.html.twig', ['userConnect' => $user, 'message' => '', ]);
+            return $this->render('pins/indexUser.html.twig', ['typelogements' => $typelogements,'userConnect' => $user, 'message' => '', ]);
             }
         } 
 
-        return $this->render('pins/indexUser.html.twig', ['userConnect' => '', 'message' => "Cet utilisateur n'existe pas ", ]);
+        return $this->render('pins/indexUser.html.twig', ['typelogements' => $typelogements,'userConnect' => '', 'message' => "Cet utilisateur n'existe pas ", ]);
     }
 
-       /**
+    /** deconnexion
     *@Route("/deconnexion")
     */
     public function deconnect(Request $request)
     {
+        $typelogements = $this->typeLogementRepository->findAll();
         $request->getSession()->invalidate();
                 
                 return $this->render('pins/index.html.twig', [
-            'userConnect' => '',
+            'userConnect' => '', 'typelogements' => $typelogements,
         ]);
             
     }

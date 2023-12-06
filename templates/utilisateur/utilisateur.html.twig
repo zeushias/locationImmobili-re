@@ -11,6 +11,10 @@
 <div class="example-wrapper">
     <h1>Enrégistrement des utilisateurs</h1> 
 
+    <div class="container">
+        <a href="/utilisateur">Retour</a>
+    </div>
+
     {{message}}
 
     <div class="contact-content">
@@ -23,7 +27,7 @@
                                                         
                             <div class="col-lg-12">
                                                                 
-                                <fieldset>
+                                <fieldset hidden>
                                     <label for="id">id</label>
                                     <input type="text" name="id" id="id" placeholder="id..." autocomplete="on"
                                         {% if user is not same as null and user is not empty %} value="{{ user.id }}" {% endif %} />

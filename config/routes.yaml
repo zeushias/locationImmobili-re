@@ -3,7 +3,7 @@ index:
     controller: App\Controller\PinsController::index
 
 indexUser:
-    path: /
+    path: /home
     controller: App\Controller\PinsController::indexUser
 
 typelogementList:
@@ -69,3 +69,4 @@ annonceList:
 annonceCreate:
     path: /annonce/create
     controller: App\Controller\AnnoncesController::create
+    

@@ -58,15 +58,7 @@ https://templatemo.com/tm-591-villa-agency
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
 
-                    
-                    <ul class="nav">
-                      <li><a href="/" class="active">Home</a></li>
-                      <li><a href="/typelogement/">Type logement</a></li>
-                      <li><a href="/utilisateur/">Utilisateurs</a></li>
-                      <li><a href="/logement/">Logements</a></li>
-                      <li><a href="/annonce">Annonces</a></li>
-                      <li><a href="/deconnexion">Déconnexion</a></li>
-                    </ul>   
+                       
                     
                     <!-- ***** Menu End ***** -->
                 </nav>
@@ -75,3 +67,80 @@ https://templatemo.com/tm-591-villa-agency
     </div>
   </header>
   <!-- ***** Header Area End ***** -->
+
+    <div class="contact-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-15">
+
+          <div id="map">
+            <iframe src="" width="0%" height="500px" frameborder="0" style="border:0; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);" allowfullscreen=""></iframe>
+          </div>
+
+          <form id="typelogementForm" action="/typelogement/create" method="post">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="item phone">
+                <fieldset>
+                  <label for="ville">Ville</label>
+                  <input type="text" name="ville" id="ville" placeholder="Ville..." autocomplete="on" required="">
+                </fieldset>                
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="item email">
+                <fieldset>
+                  <label for="typeLogment">Type logement</label>
+                  <select type="text" name="typeLogment" id="typeLogment" placeholder="Type logment..." required="">
+                    <option>...</option>
+                    {% for tl in typelogements %}
+                    <option> {{tl.libelle}} </option>
+                    {%endfor%}                                    
+                  </select>
+                
+                  <a href="/annonce/list">Rechercher</a>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+</form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="video-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <div class="video-frame">
+            <img src="{{ asset('image/video-frame.jpg')}}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{ asset('js/jquery.min.js')}}"></script>
+  <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('js/isotope.min.js')}}"></script>
+  <script src="{{ asset('js/owl-carousel.js')}}"></script>
+  <script src="{{ asset('js/counter.js')}}"></script>
+  <script src="{{ asset('js/custom.js')}}"></script>
+
+    <script src="{{ asset('js/init_embed.js')}}"></script>
+  <script src="{{ asset('js/map.js')}}"></script>
+  <script src="{{ asset('js/onion.js')}}"></script>
+  <script src="{{ asset('js/overlay.js')}}"></script>
+  <script src="{{ asset('js/sb-admin-2.js')}}"></script>
+  <script src="{{ asset('js/sb-admin-2.min.js')}}"></script>
+    <script src="{{ asset('js/search_impl.js')}}"></script>
+  <script src="{{ asset('js/util.js')}}"></script>
+  <script src="{{ asset('js/common.min.js')}}"></script>
+          
+</body>
+</html>

@@ -13,10 +13,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UtilisateurController extends AbstractController
 {
+    // déclarations
     private $message ;
     private $utilisateurRepository;
 
-    
+    // contructeur
     public function __construct(UtilisateursRepository $utilisateurRepository)
     {
         $this->utilisateurRepository = $utilisateurRepository;

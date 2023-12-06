@@ -18,7 +18,7 @@ class TypeLogementController extends AbstractController
     private $message;
     private $typeLogementRepository;
 
-    
+    // contructeur
     public function __construct(TypeLogementRepository $typeLogementRepository, LogementsRepository $logementRepository)
     {
         $this->typeLogementRepository = $typeLogementRepository;

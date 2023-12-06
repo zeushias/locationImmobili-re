@@ -1,0 +1,51 @@
+    
+
+{% block metas %}
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
+{% endblock %}
+{% block stylesheets %}
+
+   <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/fontawesome.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/templatemo-villa-agency.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/owl.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/animate.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css')}}" type="text/css">
+  <!--
+{% endblock %}
+
+{% block bodyclass %} class="nav-md" {% endblock %}
+{% block body %}
+    <div class="container body">
+        <div class="main_container">
+            {% block bars %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    
+      <!-- Bootstrap core JavaScript -->
+  <script src="{{ asset('js/jquery.min.js')}}"></script>
+  <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('js/isotope.min.js')}}"></script>
+  <script src="{{ asset('js/owl-carousel.js')}}"></script>
+  <script src="{{ asset('js/counter.js')}}"></script>
+  <script src="{{ asset('js/custom.js')}}"></script>
+
+    <script src="{{ asset('js/init_embed.js')}}"></script>
+  <script src="{{ asset('js/map.js')}}"></script>
+  <script src="{{ asset('js/onion.js')}}"></script>
+  <script src="{{ asset('js/overlay.js')}}"></script>
+  <script src="{{ asset('js/sb-admin-2.js')}}"></script>
+  <script src="{{ asset('js/sb-admin-2.min.js')}}"></script>
+    <script src="{{ asset('js/search_impl.js')}}"></script>
+  <script src="{{ asset('js/util.js')}}"></script>
+  <script src="{{ asset('js/common.min.js')}}"></script>
+{% endblock %}

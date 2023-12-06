@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!-- saved from url=(0051)https://themewagon.github.io/VillaAgency/index.html -->
 <html lang="en">
@@ -12,6 +13,9 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}" type="text/css">
+
+
+  <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{{ asset('css/fontawesome.css')}}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/templatemo-villa-agency.css')}}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/owl.css')}}" type="text/css">
@@ -27,6 +31,19 @@ https://templatemo.com/tm-591-villa-agency
   </head>
 
 <body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader loaded">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
 
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
@@ -44,8 +61,11 @@ https://templatemo.com/tm-591-villa-agency
                     
                     <ul class="nav">
                       <li><a href="/" class="active">Home</a></li>
-                      <li><a href="/annonce/list">Annonces</a></li>
-                      <li><a href="/connexion">Connexion</a></li>
+                      <li><a href="/typelogement/">Type logement</a></li>
+                      <li><a href="/utilisateur/">Utilisateurs</a></li>
+                      <li><a href="/logement/">Annonces</a></li>
+                      <li><a href="/annonce">Logements</a></li>
+                      <li><a href="/deconnexion">Déconnexion</a></li>
                     </ul>   
                     
                     <!-- ***** Menu End ***** -->
@@ -57,8 +77,7 @@ https://templatemo.com/tm-591-villa-agency
   <!-- ***** Header Area End ***** -->
 
 
-
-  <div class="contact-content">
+    <div class="contact-content">
     <div class="container">
       <div class="row">
         <div class="col-lg-15">
@@ -67,34 +86,22 @@ https://templatemo.com/tm-591-villa-agency
             <iframe src="" width="0%" height="500px" frameborder="0" style="border:0; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);" allowfullscreen=""></iframe>
           </div>
 
-          <form id="typelogementForm" action="/typelogement/create" method="post">
+          {% for annonce in annonces %}                    
+          
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-5">
               <div class="item phone">
                 <fieldset>
-                  <label for="ville">Ville</label>
-                  <input type="text" name="ville" id="ville" placeholder="Ville..." autocomplete="on" required="">
+                  <img src="{{ asset('image/video-frame.jpg')}}" alt="">
+                  <label for="description">{{annonce.description}}</label>
+                  
                 </fieldset>                
               </div>
             </div>
 
-            <div class="col-lg-6">
-              <div class="item email">
-                <fieldset>
-                  <label for="typeLogment">Type logement</label>
-                  <select type="text" name="typeLogment" id="typeLogment" placeholder="Type logment..." required="">
-                    <option>...</option>
-                    {% for tl in typelogements %}
-                    <option> {{tl.libelle}} </option>
-                    {%endfor%}                                    
-                  </select>
-                        
-                  <a href="/annonce/list">Rechercher</a>
-                </fieldset>
-              </div>
-            </div>
           </div>
-</form>
+
+          {%endfor%} 
         </div>
       </div>
     </div>
@@ -105,12 +112,14 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row">
         <div class="col-lg-10 offset-lg-1">
           <div class="video-frame">
-            <img src="{{ asset('image/video-frame.jpg')}}" alt="">
+            
           </div>
         </div>
       </div>
     </div>
   </div>
+
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="{{ asset('js/jquery.min.js')}}"></script>
@@ -132,5 +141,3 @@ https://templatemo.com/tm-591-villa-agency
           
 </body>
 </html>
-
-

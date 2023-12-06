@@ -14,11 +14,13 @@ use App\Repository\LogementsRepository;
 
 class AnnoncesController extends AbstractController
 {
-    
+    // déclarations
     private $message;
     private $typeLogementRepository;
+    private $annoncesRepository;
+    private $logementRepository;
 
-    
+   // contructeur 
     public function __construct(TypeLogementRepository $typeLogementRepository, LogementsRepository $logementRepository, AnnoncesRepository $annoncesRepository)
     {
         $this->typeLogementRepository = $typeLogementRepository;
@@ -27,6 +29,7 @@ class AnnoncesController extends AbstractController
         $this->message = '';
     }
 
+    // liste des annonces
     #[Route('/annonce/list', name: 'app_annonces_all')]
     public function getAll(): Response
     {

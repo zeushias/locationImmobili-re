@@ -9,6 +9,10 @@
 <div class="example-wrapper">
     <h1>Enrégistrement des types de logement</h1> 
 
+    <div class="container">
+            <a href="/typelogement">Retour</a>
+    </div>
+
     {{message}}
 
     <div class="contact-content">
@@ -21,7 +25,7 @@
                                                         
                             <div class="col-lg-12">
                                                                 
-                                <fieldset>
+                                <fieldset hidden>
                                     <label for="id">id</label>
                                     <input type="text" name="id" id="id" placeholder="id..." autocomplete="on"
                                         {% if typeLogement is not same as null and typeLogement is not empty %} value="{{ typeLogement.id }}" {% endif %} />
